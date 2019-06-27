@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Registration</ion-title>
+      <ion-back-button slot="start"
+                       item-right
+                       defaultHref="/home"></ion-back-button>
+    </ion-toolbar>
+  </ion-header>
+<ion-content center>
+  <ion-grid style="height: 100%; flex-direction: column;">
+    <ion-row center
+             justify-content-center
+             align-items-center
+             style="height: 100%">
+      <ion-col>
+        <form [formGroup]="registrationGroup">
+          <ion-item [ngClass]="{'before-validation': !(getControl('firstName').dirty || getControl('firstName').touched)}" class="rounded-validate no-focusable-line">
+            <ion-input class="no-validation-line" formControlName = "firstName" type="text"
+                       placeholder="First name"></ion-input>
+          </ion-item>
+          <title *ngIf="(getControl('firstName').dirty || getControl('firstName').touched) && getControl('firstName').invalid" class="error">First name has 1 or more characters.</title>
+          <ion-item [ngClass]="{'before-validation': !(getControl('lastName').dirty || getControl('lastName').touched)}" class="rounded-validate no-focusable-line">
+            <ion-input class="no-validation-line"  formControlName = "lastName" type="text"
+                       placeholder="Last name"></ion-input>
+          </ion-item>
+          <title *ngIf="(getControl('lastName').dirty || getControl('lastName').touched) && getControl('lastName').invalid" class="error">Last name has 1 or more characters.</title>
+          <ion-item [ngClass]="{'before-validation': !(getControl('email').dirty || getControl('email').touched)}" class="rounded-validate no-focusable-line">
+            <ion-input class="no-validation-line"  formControlName = "email" type="text"
+                       placeholder="Email"></ion-input>
+          </ion-item>
+          <title *ngIf="(getControl('email').dirty || getControl('email').touched) && getControl('email').invalid" class="error">Email is not required.</title>
+            <ion-item [ngClass]="{'before-validation': !(getControl('password').dirty || getControl('password').touched)}" class="rounded-validate no-focusable-line">
+              <ion-input class="no-validation-line" type="password" formControlName = "password" type="text"
+                       placeholder="Password"></ion-input>
+              </ion-item>
+          <title *ngIf="(getControl('password').dirty || getControl('password').touched) && getControl('password').invalid" class="error">Password has 8 or more characters.</title>
+            <ion-item [ngClass]="{'before-validation': !(getControl('firstName').dirty || getControl('firstName').touched), 'item-error': getControl('confirmPassword').invalid }" class="rounded no-focusable-line">
+              <ion-input class="no-validation-line" type="password"  formControlName = "confirmPassword" type="text"
+                         placeholder="Confirm password"></ion-input>
+            </ion-item>
+          <title *ngIf="(getControl('confirmPassword').dirty || getControl('confirmPassword').touched) && getControl('confirmPassword').invalid" class="error">Passwords do not match.</title>
+        </form>
+
+        <button [disabled] = "registrationGroup.invalid" style="color: #fff" clear (click)="signUp()">Registration</button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-content>
+    <ion-item class="item-remove-padding" lines="none">
+        <ion-back-button  item-right defaultHref="/home/catalog/magazines"></ion-back-button>
+        <ion-button *ngIf="authenticationService.isLogined()" (click)="addProductToBasket(magazine)" size="small" class="details-buy-button" item-right>Buy</ion-button>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-title slot="start">{{magazine.name}}</ion-title>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label><span>Category:</span>{{magazine.category.name}}<br /></ion-label>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label><span>Price:</span> {{magazine.price}}<br /></ion-label>
+    </ion-item>
+    <ion-item lines="none">
+        <ion-label>{{magazine.description}}</ion-label>
+    </ion-item>
+</ion-content>

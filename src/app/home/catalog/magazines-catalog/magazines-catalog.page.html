@@ -1,0 +1,23 @@
+<ion-content>
+    <ion-content>
+        <ion-searchbar (ionClear)="searchCancel()" (input)="searchBoxSearch($event)" hideCancelButton="true"></ion-searchbar>
+        <ion-card *ngFor="let magazine of searchMagazines">
+            <ion-card-header>
+              <ion-card-title>{{magazine.name}}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content>
+              <ion-label><span>Category:</span> {{magazine.category.name}}<br/></ion-label>
+              <ion-label><span>Price:</span> {{magazine.price}}<br/></ion-label>
+              <br/>
+                {{magazine.description}}
+              <div class="buttons">
+                  <ion-button [routerLink] = "['/home','catalog', 'magazine', magazine.id]" fill="outline"
+                      slot="end">Details</ion-button>
+                  <ion-button *ngIf="authenticationService.isLogined()" fill="outline"
+                      slot="end" (click)="addProductToBasket(magazine)">Buy</ion-button>
+              </div>
+            </ion-card-content>
+          </ion-card>
+    </ion-content>
+</ion-content>

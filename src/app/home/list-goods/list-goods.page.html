@@ -1,0 +1,33 @@
+<ion-content>
+    <ion-button class="catalog-button" [routerLink]="['/home','catalog']">Catalog</ion-button>
+    <div>
+        <div *ngIf="!autheficationService.isLogined()"
+             class="login-buttons-container">
+            <button class="signIn-button btn"
+                    (click)='navigateSignIn()'>Sign in</button>
+            <button class="signUp-button btn"
+                    (click)='navigateSignUp()'>Sign up</button>
+        </div>
+        <div class="popular-products">
+            <h2 class="title">
+                Popular products
+            </h2>
+        </div>
+    </div>
+
+    <div class="cards">
+        <div class="card-container"
+                  *ngFor="let product of popularProducts">
+            <div class="card">
+                <ion-item>
+                    <ion-label>{{product.name}}</ion-label>
+                </ion-item>
+                <ion-card-content>
+                    {{product.description}}
+                </ion-card-content>
+                <ion-button fill="outline"
+                            slot="end">Buy</ion-button>
+            </div>
+        </div>
+    </div>
+</ion-content>

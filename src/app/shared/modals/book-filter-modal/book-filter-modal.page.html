@@ -1,0 +1,29 @@
+
+  <ion-item class="item-remove-padding">
+    <ion-label>Price:</ion-label>
+    <ion-range #price dualKnobs="true"
+               min="{{minPrice}}"
+               max="{{maxPrice}}"
+               color="secondary">
+      <ion-label slot="start">{{minPrice}}</ion-label>
+      <ion-label slot="end">{{maxPrice}}</ion-label>
+    </ion-range>
+  </ion-item>
+  <ion-item class="item-remove-padding">
+    <ion-label>Category:</ion-label>
+    <ion-select #selectCategories>
+      <ion-select-option value="{{null}}" selected>
+              None
+      </ion-select-option>
+      <ion-select-option *ngFor="let category of categories"
+                         value="{{category.id}}">
+        {{category.name}}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div class="buttons">
+    <ion-button slot="end"
+      (click)="close()">Ok</ion-button>
+    <ion-button slot="end"
+                (click)="close()">Close</ion-button>
+  </div>

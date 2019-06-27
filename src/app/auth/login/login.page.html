@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Registration</ion-title>
+      <ion-back-button slot="start"
+                       item-right
+                       defaultHref="/home"></ion-back-button>
+    </ion-toolbar>
+  </ion-header>
+<ion-content center>
+  <ion-grid style="height: 100%; flex-direction: column;">
+    <ion-row center
+             justify-content-center
+             align-items-center
+             style="height: 100%">
+      <ion-col>
+        <ion-text style="text-align: center; font-weight: 800;">
+          <h3>Login</h3>
+        </ion-text>
+        <form [formGroup]="loginGroup">
+          <ion-item class="rounded no-focusable-line">
+            <ion-input formControlName="email"
+                       type="text"
+                       placeholder="Email"></ion-input>
+          </ion-item>
+          <ion-item class="rounded no-focusable-line no-native-padding"
+                    id="login-password">
+            <ion-input formControlName="password"
+                       type="password"
+                       placeholder="Password"></ion-input>
+            <button id="forgot"
+                    clear
+                    item-right>Forgot?</button>
+          </ion-item>
+          <button [disabled]="!getControl('email').value || !getControl('password').value" clear
+                  (click)="login()"
+                  id="login">Login</button>
+          <button clear
+                  id="registration"
+                  (click)="navigateRegistration()">Registration</button>
+          <div class="or-block">
+            <div class="separator"></div>
+            <p>Or</p>
+            <div class="separator"></div>
+          </div>
+          <button style="background: url(assets/icon/facebook.svg);         
+                       background-position-x: center;
+                       background-position-y: center;
+                       background-repeat: no-repeat;"
+                  class="login-btn"
+                  (click)="facebookLogin()"></button>
+          <button style="background: url(assets/icon/google-plus.svg);
+                       background-position-x: center;
+                       background-position-y: center;
+                       background-repeat: no-repeat;"
+                  class="login-btn"
+                  (click)="googleLogin()"></button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

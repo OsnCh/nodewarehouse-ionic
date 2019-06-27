@@ -1,0 +1,13 @@
+.bottom-item{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    --inner-padding-end: 0;
+    --background: #5c5b5e;
+    ion-button{
+        width: 50%;
+        height: 40px;
+    }
+}

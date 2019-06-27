@@ -1,1 +1,47 @@
+ion-searchbar{
+    margin: -5px;
+}
+ion-menu{
+    display: flex;
+    z-index: -20;
+    ion-row{
+        width: 100%;
+        span{
+            text-align: center;
+        }
+        ion-icon{
+            margin: 20px 15px;
+        }
+    }
 
+    ion-button{
+        width: 100%;
+        ion-icon{
+            margin: 0 10px;
+        }
+        .btn-content{
+            margin-right: auto;
+        }
+    }
+
+    ion-content{    
+        .logout{
+            position: absolute;
+            bottom: 0;
+            width: calc(100% - 2em);
+            left: 1em;
+        }
+    }
+
+    ion-button.active{
+        --color: #829bc5;
+    }
+}
+
+ion-menu.show-menu{
+    z-index: 20;
+}
+
+#content{
+    --offset-top: -60px;
+}

@@ -1,14 +1,56 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+    <ion-button *ngIf="autheficationService.isLogined()" (click)="navigateToBasket()" clear size = "small" slot="end">
+        <ion-icon slot="start" name="ios-basket"></ion-icon>
+        Basket
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
-</ion-content>
+<ion-split-pane contentId='content'>
+  <ion-menu side="start"
+            menuId="menu"
+            contentId='content'>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <div class="h-100">
+        <ion-button routerLinkActive="active"
+                    [routerLink]="['/home','listgoods']"
+                    fill="clear">
+          <div class="btn-content">
+            <ion-icon item-left
+                      name="star"></ion-icon>
+            List goods
+          </div>
+        </ion-button>
+        <ion-button routerLinkActive="active"
+                    [routerLink]="['/home','catalog']"
+                    fill="clear">
+          <div class="btn-content">
+            <ion-icon item-left
+                      name="pricetag"></ion-icon>
+            Catalog
+          </div>
+        </ion-button>
+        <ion-button *ngIf="autheficationService.isLogined()"
+                    class="logout"
+                    (click)="autheficationService.logOut()"
+                    color="danger">Logout</ion-button>
+      </div>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-content id='content'>
+      <ion-router-outlet></ion-router-outlet>
+  </ion-content>
+</ion-split-pane>

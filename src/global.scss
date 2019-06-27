@@ -9,3 +9,131 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+.rounded {
+    width: 100%;
+    --border-radius: 2px 2px 0 0;
+    --border-width: 2;
+    --border-color: #3498db;
+    margin: 15px;
+    width: calc( 100% - 30px );
+}
+
+.separator{
+    margin: 15px 0;
+    height: 1px;
+    background:#3d3c3c62;
+    border-bottom:1px solid #31303054;
+  }
+
+.rounded-validate.ion-valid {
+    width: 100%;
+    --border-radius: 2px 2px 0 0;
+    --border-width: 2;
+    --border-color: #3498db;
+    margin: 15px;
+    width: calc( 100% - 30px );
+}
+
+.rounded-validate.ion-invalid{
+    width: 100%;
+    --border-radius: 2px 2px 0 0;
+    --border-width: 2;
+    --border-color: #8f1919;
+    margin: 15px;
+    width: calc( 100% - 30px );
+}
+
+.item-error{
+    --border-color: #8f1919;
+}
+
+.error{
+    display: block;
+    color: #8f1919;
+    margin: auto 15px;
+}
+
+.no-focusable-line{
+    --highlight-color-focused: none;
+    --highlight-color-valid: transparent;
+    --highlight-color-invalid: transparent;
+    --highlight-color-focused: var(--ion-color-light);
+}
+
+.no-native-padding{
+    --padding-end: 0; 
+    --inner-padding-end: 0px;
+}
+
+.no-validation-line{    
+    ion-item {
+        --highlight-color-valid: transparent;
+        --highlight-color-invalid: transparent;
+        --highlight-color-focused: var(--ion-color-light);
+    } 
+  }
+
+.or-block{
+    display: block;
+    margin: 20px 15px;
+
+    div, p{
+        display: inline-block;
+        margin: auto 0;
+        text-align: center;
+    }
+    div{
+        width: 40%;
+        margin-bottom: 4px;
+    }
+    p{
+        margin-top: 5px; 
+        width: 20%;
+    }
+}
+
+.login-btn{
+    margin: auto 15px;
+    padding-bottom: 10px; 
+    display: inline-block;
+    width: calc(50% - 30px);
+    height: 3em;
+
+    button{
+        width: 100%;
+    }
+}
+
+.item-remove-padding{
+    --inner-padding-start: 0px; 
+    --padding-start: 0;
+    --inner-padding-end: 0px; 
+    --padding-end: 0;
+}
+
+.filter-modal {
+    background: rgba(0, 0, 0, 0.5) !important;
+    padding: 20% 2%  !important;
+        .modal-wrapper{
+            height: 160px;
+            border-radius: 3px;
+        }
+    .buttons{
+        display: flex;
+        margin: 4px;
+        ion-button:first-child{
+            margin-left: auto;
+        }
+    }
+ }
+
+ .details-buy-button{
+     margin-left: auto;
+     margin-right: 20px;
+ }
+
+
+.before-validation{
+    --border-color: #3498db !important;
+}

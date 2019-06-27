@@ -1,0 +1,17 @@
+ion-list{
+   ion-item{
+        --padding-start: 0;
+        --inner-padding-start: 20px;
+        ion-img{
+            width: 7%;
+            max-width: 3em;
+            margin-right: 10px;
+        }
+    }   
+
+    ion-item:active, ion-item:hover{
+        ion-img{
+            fill: #faa !important;
+        }
+    }
+}

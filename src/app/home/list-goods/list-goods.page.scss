@@ -1,0 +1,62 @@
+
+.login-buttons-container{
+    background: #f0ecdc;
+    margin: 0.2em;
+    padding: 15px;
+    button{
+        width: 50%;
+        display: block;
+        margin: 2px auto;
+    }
+    .signIn-button{
+        padding: 5px 35px;
+        background: rgb(83, 83, 172);
+        color: #fff;
+    }
+    .signUp-button{
+        padding: 5px 15px;
+        color: rgb(97, 97, 128);
+        background: none;
+    }
+}
+
+.catalog-button{
+    margin: 5px;
+    width: calc(100% - 10px) !important;
+    button{
+        width: 100% !important;
+    }
+}
+
+.cards{
+    margin: 0 5px;
+}
+
+.card-container{
+    width: 50%;
+    display: inline-block;
+    .card {
+        margin: 5px !important;
+        padding: 0 !important;
+      }
+    ion-button{
+        margin: 10px 5%;
+        height: 2em;
+    }
+    ion-card-content{
+        padding: 5%;
+        font-size: 0.8em;
+    }
+    ion-item{
+        --padding-start: 0;
+        --inner-padding-start: 0.3em;
+    }
+    .item-inner{
+        padding: 0;
+    }
+}
+
+.popular-products{
+    margin-right: 5px;
+    margin-left: 5px;
+}
