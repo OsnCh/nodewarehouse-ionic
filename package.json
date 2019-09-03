@@ -4,7 +4,9 @@
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
+    "setup": "npm install && npm run pre-build-events",
     "ng": "ng",
+    "pre-build-events": "node crypto.js",
     "start": "ng serve",
     "build": "ng build",
     "build:production": "ng build --prod --configuration=production",
