@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PwaInstallService } from './services/pwa.install.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     IonicModule.forRoot(), 
     AppRoutingModule, 
     CoreModule, 
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
+    PwaInstallService
   ],
   providers: [
     StatusBar,
