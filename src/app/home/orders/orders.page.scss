@@ -1,0 +1,32 @@
+.order-block{
+    .according{
+        height: fit-content;
+        max-height: 0;
+        transition: max-height 2s ease-in;
+        --background: rgba(0, 0, 0, 0.5);
+    }
+    .clear-button{
+        transition: 0.2s ease-in;
+    }
+}
+
+.order-block.opened{
+    .clear-button{
+        transform: rotate(180deg);
+    } 
+    .according{
+        max-height: 10000px;
+    }
+}
+
+.product{
+    width: 100%;
+    border: rgba(0, 0, 0, 0.411);
+    p{
+        width: 100%;
+    }
+    .description{
+        overflow:hidden; 
+        white-space: nowrap;
+    }
+}

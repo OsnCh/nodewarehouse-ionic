@@ -23,15 +23,15 @@ export class RegistrationPage implements OnInit {
     private router: Router,
     private loaderService: LoaderService,
     private popupService: PopupService,
-    private location: Location) { }
+    public location: Location) { }
 
   ngOnInit() {
     this.registrationGroup = this.formBuilder.group({
       firstName: ['', { validators: [Validators.required]}],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.compose([Validators.required,
-      Validators.pattern(Constants.passwordPattern)])],
+      password: ['', 
+        [Validators.pattern(Constants.passwordPattern), Validators.required]],
       confirmPassword: ['', [Validators.required]]
     }, { validators: CustomValidators.ConfirmPassword });
     this.getControl('password').valueChanges.subscribe(() => {
@@ -50,9 +50,10 @@ export class RegistrationPage implements OnInit {
     model.email = this.getControl('email').value;
     model.password = this.getControl('password').value;
     let loader = await this.loaderService.showLoader();
+
     this.authService.registration(model).subscribe(async (message) => {
       let alert = await this.popupService.showPopup(message, 'Info');
-      await this.popupService.dismiss(alert);
+      await this.loaderService.dismissLoader(loader);
       this.router.navigate(['/auth']);
     }, () => this.loaderService.dismissLoader(loader), () => this.loaderService.dismissLoader(loader));
   }

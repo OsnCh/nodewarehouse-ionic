@@ -24,12 +24,8 @@ export class AuthenticationService {
 
     logOut() {
         localStorage.removeItem(userLocalStorageKey);
-        let servicesLogOut = async () => {
-            await this.googlePlusService.logout();
-            await this.facebookService.logout();
-        };
-        servicesLogOut();
-        console.log(this.router.url);
+        localStorage.removeItem(tokenLocalStorageKey);
+        this.router.navigate(['/auth']);
     }
 
     isLogined() {
@@ -78,7 +74,6 @@ export class AuthenticationService {
         if (!userObj || !userObj.role) {
             return null;
         }
-
         return userObj;
     }
 

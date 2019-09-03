@@ -11,12 +11,12 @@ import { IonicModule } from '@ionic/angular';
     IonicModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   entryComponents: [ BookFilterModalPage ]
 })

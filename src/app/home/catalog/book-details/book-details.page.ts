@@ -23,7 +23,7 @@ export class BookDetailsPage implements OnInit {
     private loaderService: LoaderService,
     public location: Location,
     private basketService: BasketService,
-    private autheficationService:AuthenticationService) { 
+    public readonly autheficationService:AuthenticationService) { 
       this.book = new GetBookModel;
     }
 

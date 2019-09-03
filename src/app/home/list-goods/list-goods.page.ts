@@ -14,7 +14,7 @@ export class ListGoodsPage implements OnInit {
   public popularProducts: Array<ProductModel>;
 
   constructor(
-    private autheficationService: AuthenticationService,
+    public readonly autheficationService: AuthenticationService,
     private router:Router) { }
 
   ngOnInit() {

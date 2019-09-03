@@ -31,7 +31,14 @@ export class BookFilterModalPage implements OnInit{
   }
 
   public async close(){
-    let modal = await this.modalController.getTop();
+    let modal = await this.getModal();
+    if(modal){
+      await modal.dismiss()
+    }
+  }
+
+  public async ok(){
+    let modal = await this.getModal();
     if(modal){
       await modal.dismiss({ value: {
           categoryId: this.selectCategories.value,
@@ -40,6 +47,10 @@ export class BookFilterModalPage implements OnInit{
         } 
       })
     }
+  }
+
+  private async getModal(): Promise<HTMLIonModalElement>{
+    return await this.modalController.getTop()
   }
 
 }

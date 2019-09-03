@@ -8,7 +8,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { SignInAuthModel } from 'src/app/shared/models/auth/signIn.model';
 import { LoaderService } from 'src/app/services/loader.service';
 import { AuthenticationService } from 'src/app/services/aunthefication.service';
-import {Location} from '@angular/common';
+import { PopupService } from 'src/app/services/popup.service';
+import { TokenAuthModel } from 'src/app/shared/models/auth/tokenAuth.model';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import {Location} from '@angular/common';
 })
 export class LoginPage implements OnInit {
 
-  private loginGroup: FormGroup;
+  public loginGroup: FormGroup;
 
   constructor(private googlePlus: GooglePlus,
     private fb: Facebook,
@@ -26,7 +27,8 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private autheficationService: AuthenticationService,
     private formBuilder: FormBuilder, 
-    private loaderService: LoaderService) { 
+    private loaderService: LoaderService,
+    private popupService: PopupService) { 
     }
 
   ngOnInit() {
@@ -49,9 +51,10 @@ export class LoginPage implements OnInit {
 
   private async loginGoogleByApi(token: string) {
     let loader = await this.loaderService.showLoader()
-    this.authService.signInByGoogle(token).subscribe((response) => {
+    this.authService.signInByGoogle(token).subscribe(async (response) => {
       this.navigateDashboard(response.accessToken);
-    }, (error) => { console.log(error); this.loaderService.dismissLoader(loader)}, () => this.loaderService.dismissLoader(loader) )
+      this.showPopupNewSocialUser(response);
+    }, async (error) => { await this.googlePlus.logout(); console.log(error); this.loaderService.dismissLoader(loader)}, () => this.loaderService.dismissLoader(loader) )
   }
 
   public facebookLogin() {
@@ -62,9 +65,17 @@ export class LoginPage implements OnInit {
 
   private async loginFacebookByApi(token: string) {
     let loader = await this.loaderService.showLoader()
-    this.authService.signInByFacebook(token).subscribe((response) => {
-      this.navigateDashboard(response.accessToken)
-    }, (error) => { console.log(error); this.loaderService.dismissLoader(loader)}, () => this.loaderService.dismissLoader(loader) )
+    this.authService.signInByFacebook(token).subscribe(async (response) => {
+      this.navigateDashboard(response.accessToken);
+      await this.fb.logout();
+      this.showPopupNewSocialUser(response);
+    }, async (error) => { await this.fb.logout();console.log(error); this.loaderService.dismissLoader(loader)}, () => this.loaderService.dismissLoader(loader) )
+  }
+
+  private showPopupNewSocialUser(response: TokenAuthModel){
+    if(response.isNewUser){
+      this.popupService.showPopup('A password has been sent to your email.');
+    }
   }
 
   public navigateRegistration() {

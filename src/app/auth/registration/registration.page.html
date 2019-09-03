@@ -1,9 +1,9 @@
 <ion-header>
     <ion-toolbar>
+        <ion-back-button slot="start"
+        item-right
+        defaultHref="/home"></ion-back-button>
       <ion-title>Registration</ion-title>
-      <ion-back-button slot="start"
-                       item-right
-                       defaultHref="/home"></ion-back-button>
     </ion-toolbar>
   </ion-header>
 <ion-content center>
@@ -30,12 +30,12 @@
           </ion-item>
           <title *ngIf="(getControl('email').dirty || getControl('email').touched) && getControl('email').invalid" class="error">Email is not required.</title>
             <ion-item [ngClass]="{'before-validation': !(getControl('password').dirty || getControl('password').touched)}" class="rounded-validate no-focusable-line">
-              <ion-input class="no-validation-line" type="password" formControlName = "password" type="text"
+              <ion-input class="no-validation-line" type="password" formControlName = "password"
                        placeholder="Password"></ion-input>
               </ion-item>
           <title *ngIf="(getControl('password').dirty || getControl('password').touched) && getControl('password').invalid" class="error">Password has 8 or more characters.</title>
-            <ion-item [ngClass]="{'before-validation': !(getControl('firstName').dirty || getControl('firstName').touched), 'item-error': getControl('confirmPassword').invalid }" class="rounded no-focusable-line">
-              <ion-input class="no-validation-line" type="password"  formControlName = "confirmPassword" type="text"
+            <ion-item [ngClass]="{'before-validation': !(getControl('confirmPassword').dirty || getControl('confirmPassword').touched), 'item-error': getControl('confirmPassword').invalid }" class="rounded no-focusable-line">
+              <ion-input class="no-validation-line" type="password"  formControlName = "confirmPassword"
                          placeholder="Confirm password"></ion-input>
             </ion-item>
           <title *ngIf="(getControl('confirmPassword').dirty || getControl('confirmPassword').touched) && getControl('confirmPassword').invalid" class="error">Passwords do not match.</title>

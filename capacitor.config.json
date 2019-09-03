@@ -1,0 +1,7 @@
+{
+  "appId": "io.ionic.bookstore",
+  "appName": "book_store",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

@@ -21,7 +21,7 @@ export class MagazineDetailsPage implements OnInit {
     private loaderService: LoaderService,
     private route: ActivatedRoute,
     private basketService: BasketService,
-    private authenticationService:AuthenticationService) { 
+    public readonly authenticationService:AuthenticationService) { 
       this.magazine = new GetMagazinesItemModel;
       this.magazine.category = new GetSelectCategoryModel;
     }

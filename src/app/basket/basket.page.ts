@@ -18,7 +18,7 @@ export class BasketPage implements OnInit {
 
   public items: Array<BasketItemModel>;
 
-  constructor(private basketService: BasketService,
+  constructor(public readonly basketService: BasketService,
     private orderService: OrderService,
     private loaderService: LoaderService,
     private popupService: PopupService,

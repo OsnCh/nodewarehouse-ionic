@@ -4,9 +4,9 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
-    <ion-button *ngIf="autheficationService.isLogined()" (click)="navigateToBasket()" clear size = "small" slot="end">
+    <ion-button class="clear-button" *ngIf="autheficationService.isLogined()" (click)="navigateToBasket()" clear size = "small" slot="end">
         <ion-icon slot="start" name="ios-basket"></ion-icon>
-        Basket
+        Cart
     </ion-button>
   </ion-toolbar>
 </ion-header>
@@ -39,6 +39,16 @@
             <ion-icon item-left
                       name="pricetag"></ion-icon>
             Catalog
+          </div>
+        </ion-button>
+        <ion-button routerLinkActive="active"
+                    [routerLink]="['/home','orders']"
+                    *ngIf="autheficationService.isLogined()"
+                    fill="clear">
+          <div class="btn-content">
+            <ion-icon item-left
+                      name="cash"></ion-icon>
+            Orders
           </div>
         </ion-button>
         <ion-button *ngIf="autheficationService.isLogined()"

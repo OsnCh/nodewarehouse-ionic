@@ -29,7 +29,7 @@ export class BooksCatalogPage implements OnInit {
     private loaderService: LoaderService,
     private modalController: ModalController,
     private basketService: BasketService,
-    private authenticationService:AuthenticationService) { }
+    private authenticationService: AuthenticationService) { }
 
   async ngOnInit() {
     this.filterModel = new BookFilterModel;
@@ -57,8 +57,8 @@ export class BooksCatalogPage implements OnInit {
     }
     this.searchBooks = this.searchBooks.filter((book) => {
       let res = (!this.filterModel.categoryId || book.category.id == this.filterModel.categoryId) &&
-                (!this.filterModel.minPrice || this.filterModel.minPrice <= book.price) &&
-                (!this.filterModel.maxPrice || this.filterModel.maxPrice >= book.price);
+        (!this.filterModel.minPrice || this.filterModel.minPrice <= book.price) &&
+        (!this.filterModel.maxPrice || this.filterModel.maxPrice >= book.price);
       return res;
     });
   }
@@ -83,8 +83,11 @@ export class BooksCatalogPage implements OnInit {
       cssClass: 'filter-modal'
     })
     await filter.present();
-    this.filterModel = (await filter.onDidDismiss()).data.value as BookFilterModel;
-    this.sort();
+    let dataModal = (await filter.onDidDismiss()).data;
+    if (dataModal.value) {
+      this.filterModel = dataModal.value;
+      this.sort();
+    }
   }
 
 
@@ -102,7 +105,7 @@ export class BooksCatalogPage implements OnInit {
     return this.books.sort((a, b) => (a.price > b.price) ? 1 : -1);
   }
 
-  public addBookToBasket(item: GetBooksItemModel){
+  public addBookToBasket(item: GetBooksItemModel) {
     this.basketService.addProduct({
       type: ProductType.BOOK,
       count: 1,

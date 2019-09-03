@@ -137,3 +137,11 @@
 .before-validation{
     --border-color: #3498db !important;
 }
+
+.clear-button{
+    --background: none;
+    --background-activated: none;
+    --color: #3880ff;
+    --color-activated: #3881ffa6;
+    --box-shadow: none;
+}

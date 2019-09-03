@@ -1,0 +1,42 @@
+<ion-content>
+  <ion-refresher slot="fixed"
+                 (ionRefresh)="refreshData($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="order-block closed"
+       *ngFor="let order of orders">
+    <ion-item>
+      <p style="margin: auto;">Amount:</p>
+      <ion-title>{{order.amount}}</ion-title>
+      <ion-button (click)="open($event)"
+                  class="clear-button">
+        <ion-icon class="arrow"
+                  name="arrow-down"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-list class="according">
+      <div *ngFor="let product of order.products"
+           class="product">
+        <ion-item lines="none">
+          <p><span>Type: </span>{{product.type}}</p>
+        </ion-item>
+        <ion-item lines="none">
+          <p><span>Name: </span>{{product.product.name}}</p>
+        </ion-item>
+        <ion-item lines="none">
+          <p class="description"><span>Description: </span>{{product.product.description}}</p>
+        </ion-item>
+        <ion-item lines="none">
+          <p><span>Price: </span>{{product.product.price}}</p>
+        </ion-item>
+        <ion-item lines="none">
+          <p><span>Count: </span>{{product.count}}</p>
+        </ion-item>
+        <ion-item>
+          <p><span>All price: </span>{{product.count * product.product.price}}</p>
+        </ion-item>
+      </div>
+    </ion-list>
+  </div>
+</ion-content>

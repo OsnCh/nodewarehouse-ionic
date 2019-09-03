@@ -14,6 +14,9 @@ import { MagazinesService } from '../services/magazines.service';
 import { BookDetailsPage } from './catalog/book-details/book-details.page';
 import { MagazineDetailsPage } from './catalog/magazine-details/magazine-details.page';
 import { BasketService } from '../services/basker.service';
+import { OrdersPage } from './orders/orders.page';
+import { OrderService } from '../services/order.service';
+import { LogInAuthGuard } from '../core/guards/logInAuth.guard';
 
 const routes: Routes = [
   {
@@ -40,6 +43,9 @@ const routes: Routes = [
       ,
       {
         path: 'catalog/magazine/:id', component: MagazineDetailsPage, data: { title: 'Magazine details' }
+      },
+      {
+        path: 'orders', component: OrdersPage, data: { title: 'Orders' }, canActivate: [LogInAuthGuard]
       }
     ]
   }
@@ -51,13 +57,16 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  declarations: [ HomePage, 
+  declarations: 
+  [ HomePage, 
     ListGoodsPage, 
     CatalogPage, 
     BooksCatalogPage, 
     BookDetailsPage, 
     MagazinesCatalogPage,
-    MagazineDetailsPage ],
-  providers: [ BooksService, MagazinesService, BasketService ]
+    MagazineDetailsPage,
+    OrdersPage 
+  ],
+  providers: [ BooksService, MagazinesService, BasketService, OrderService ]
 })
 export class HomePageModule { }
