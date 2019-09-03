@@ -21,12 +21,12 @@ import { PwaInstallService } from './services/pwa.install.service';
     AppRoutingModule, 
     CoreModule, 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: true }),
-    PwaInstallService
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    PwaInstallService
   ],
   bootstrap: [AppComponent]
 })

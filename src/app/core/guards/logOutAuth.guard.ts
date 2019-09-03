@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router/src/utils/preactivation';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/aunthefication.service';
-import { UserRole } from 'src/app/shared/models/appUser.model';
 
 @Injectable()
 export class LogOutAuthGuard implements CanActivate {
